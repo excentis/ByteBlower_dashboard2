@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<svg class="radial-progress" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <line id="tick" x1="104" y1="60" x2="110" y2="60" stroke-linecap="round"/>
+    </defs>
+    <g id="ticks">
+        <use class="tick quarterTick" href="#tick" transform="rotate(0 60 60)"/>
+        <use class="tick" href="#tick" transform="rotate(10 60 60)"/>
+        <use class="tick" href="#tick" transform="rotate(20 60 60)"/>
+        <use class="tick" href="#tick" transform="rotate(30 60 60)"/>
+        <use class="tick" href="#tick" transform="rotate(40 60 60)"/>
+        <use class="tick" href="#tick" transform="rotate(50 60 60)"/>
+        <use class="tick" href="#tick" transform="rotate(60 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(70 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(80 60 60)"></use>
+        <use class="tick quarterTick" href="#tick" transform="rotate(90 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(100 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(110 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(120 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(130 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(140 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(150 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(160 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(170 60 60)"></use>
+        <use class="tick quarterTick" href="#tick" transform="rotate(180 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(190 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(200 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(210 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(220 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(230 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(240 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(250 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(260 60 60)"></use>
+        <use class="tick quarterTick" href="#tick" transform="rotate(270 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(280 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(290 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(300 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(310 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(320 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(330 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(340 60 60)"></use>
+        <use class="tick" href="#tick" transform="rotate(350 60 60)"></use>
+        <use class="tick quarterTick" href="#tick" transform="rotate(360 60 60)"></use>
+    </g>
+    <g id="tickLabels" class="tick-labels">
+        <text x="85" y="65" text-anchor="middle" transform="rotate(90 90,65)">0</text>
+        <text x="45" y="33" text-anchor="middle" transform="rotate(90 53,35)">50</text>
+        <text x="15" y="65" text-anchor="middle" transform="rotate(90 20,65)">100</text>
+        <text x="50" y="93" text-anchor="middle" transform="rotate(90 53,95)">50</text>
+    </g>
+    <circle class="radial-track" cx="60" cy="60" r="54" fill="none"></circle>
+</svg>
