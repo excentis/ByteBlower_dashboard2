@@ -8,7 +8,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            endpoint: 'http://localhost:8080/',
+            endpoint: 'http://10.1.1.17:8080/',
             socket: null
         }
     }
