@@ -26,7 +26,7 @@ class Updater:
         [a.append(b) for b in self.update]
         api.ResultsRefresh(a)
             
-class VendorCounter: 
+class PortTrigger: 
     """
         A single, virtual vendor counter.
         
@@ -47,7 +47,6 @@ class VendorCounter:
             Current bandwidht on the interface.
             Returned in bytes per second, includes frame overhead.
             Filling the line with 10 Gbit/s will display 10 Gbit/s
-
         """
         history = self.trigger.ResultHistoryGet()
         if 0 == history.IntervalLengthGet():
@@ -64,18 +63,23 @@ class VendorCounter:
 
 API = byteblower.ByteBlower.InstanceGet()
 SERVER = API.ServerAdd("byteblower-dev-1300-2.lab.byteblower.excentis.com")
-interfaces= {'Intel' : VendorCounter(SERVER, 'nontrunk-1', ''), 'Huaway' : VendorCounter(SERVER, 'nontrunk-2', '')}
+interfaces= {'Intel' : PortTrigger(SERVER, 'nontrunk-1', ''), 'Huaway' : PortTrigger(SERVER, 'nontrunk-2', '')}
 
 
 vendors = interfaces.values()
-update = Updater()
-for v in vendors:
-    v.update(update)
 
-update.refresh(byteblower.ByteBlower.InstanceGet())
+def single_update(vendors):
+    update = Updater()
+    for v in vendors:
+        v.update(update)
 
-for v in vendors:
-    print(v.result())
+    update.refresh(byteblower.ByteBlower.InstanceGet())
 
+    for v in vendors:
+        print(v.result())
+
+for _ in xrange(100):
+    single_update(vendors)
+    time.sleep(0.9)
 
 

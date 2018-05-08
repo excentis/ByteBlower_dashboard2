@@ -3,11 +3,21 @@ import SocketIOClient from 'socket.io-client';
 import Gauge from 'react-svg-gauge';
 import {Grid, Segment, Image} from 'semantic-ui-react';
 
-const topLabelStyle = {
-
+const valueLabelStyle = {
+    textAnchor: "middle",
+        fill:"#000000",
+        stroke: "none",
+        fontStyle: "normal",
+        fontVariant: "normal",
+        fontWeight: 'bold',
+        fontStretch: 'normal',
+        lineHeight: 'normal',
+        fillOpacity: 1,
+        fontSize: 20,
 }
 
-class Meter extends React.Component {
+
+    class Meter extends React.Component {
 
     constructor(props) {
         super(props);
@@ -40,20 +50,24 @@ class Meter extends React.Component {
                 <Segment textAlign='center'>
 
                     <Gauge
-                        label="downstream"
-                        value={downstream}
+                        label="downstream | Mbps"
+                        value={Number(downstream / 1000000).toFixed(2)}
+                        max={4000}
                         width={150}
                         height={200}
                         color={"#00adef"}
+                        valueLabelStyle={valueLabelStyle}
                     >
                     </Gauge>
 
                     <Gauge
-                        label="upstream"
-                        value={upstream}
+                        label="upstream | Mbps"
+                        value={Number(upstream / 1000000).toFixed(2)}
                         width={160}
+                        max={1500}
                         height={200}
                         color={"#00adef"}
+                        valueLabelStyle={valueLabelStyle}
                     >
                     </Gauge>
                 </Segment>
