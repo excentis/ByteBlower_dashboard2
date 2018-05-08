@@ -44,8 +44,6 @@ class App extends Component {
                         <Meter roomName="broadcom" socket={socket}/>
                         <Meter roomName="hitron" socket={socket}/>
                         <Meter roomName="ubee" socket={socket}/>
-
-
                 </Grid>
 
             </div>
