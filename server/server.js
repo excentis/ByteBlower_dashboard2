@@ -38,6 +38,6 @@ io.on('connection', (socket) => {
     })
 })
 
-http.listen(PORT, "10.1.1.17",() => {console.log('listening on port ' + PORT)})
+http.listen(PORT,() => {console.log('listening on port ' + PORT)})
 
 

@@ -33,7 +33,6 @@ class App extends Component {
                     </Grid>
                 </Segment>
                 <Grid columns='equal' centered>
-
                         <Meter roomName="avm" socket={socket}/>
                         <Meter roomName="askey" socket={socket}/>
                         <Meter roomName="sagemcom" socket={socket}/>
