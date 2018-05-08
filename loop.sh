@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/bash
 
 # $RANDO
 echo "running post loops";
