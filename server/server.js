@@ -9,12 +9,12 @@ const path = require('path');
 const PORT = process.env.PORT || 8080
 
 //let the server server static files
-app.use(express.static(path.join(__dirname,'build')));
+app.use(express.static(path.join(__dirname,'../build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+    res.sendFile(path.join(__dirname, '../build', 'index.html'))
 })
 
 app.post('/:client', (req, res) => {
@@ -36,6 +36,6 @@ io.on('connection', (socket) => {
     })
 })
 
-http.listen(PORT, "10.1.1.17", () => {console.log('listening on port ' + PORT)})
+http.listen(PORT, () => {console.log('listening on port ' + PORT)})
 
 
