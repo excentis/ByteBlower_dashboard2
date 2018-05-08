@@ -4,9 +4,14 @@ import time
 
 class Updater:
     """
-        A helper class to refresh snapshot histories.
+        A helper class to fetch the results from the ByteBlower servers
 
-        Uses a visitor pattern to collect all Refreshable results.
+        Standard usage is to offer this class to every other that has API 
+        objects needing to be managed. 
+        
+        Call the refresh method regularly will fetch the new snapshots from
+        the ByteBlower server and remove old ones.
+
     """
     def __init__ (self):
         self.update = []
@@ -14,7 +19,7 @@ class Updater:
     def add(self, to_refresh):
         """
             Add an item to the list of things
-            needing  a refresh.
+            needing a refresh.
         """
         self.update.append(to_refresh)
 
@@ -22,13 +27,14 @@ class Updater:
         """
             Does the refresh.
         """
-        a = byteblower.AbstractRefreshableResultList()
-        [a.append(b) for b in self.update]
-        api.ResultsRefresh(a)
+        special_list = byteblower.AbstractRefreshableResultList()
+        [b.Clear() for b in self.update]
+        [special_list.append(b) for b in self.update]
+        api.ResultsRefresh(special_list)
             
 class PortTrigger: 
     """
-        A single, virtual vendor counter.
+        A single, virtual port counter.
         
         @detail
         A thin wrapper around the ByteBlower trigger.
@@ -61,12 +67,39 @@ class PortTrigger:
 
         return physical_count / sample_duration
 
-API = byteblower.ByteBlower.InstanceGet()
-SERVER = API.ServerAdd("byteblower-dev-1300-2.lab.byteblower.excentis.com")
-interfaces= {'Intel' : PortTrigger(SERVER, 'nontrunk-1', ''), 'Huaway' : PortTrigger(SERVER, 'nontrunk-2', '')}
+class TriggerGroup: 
+    """
+        A group of port triggers. Responsible for aggregating several results.        
+    """
+    def __init__(self, *port_triggers):
+        self.triggers = port_triggers
+
+    def update(self, updater):
+        [trig.update(updater) for trig in self.triggers]
+    
+    def result(self):
+        return sum([trig.result()  for trig in self.triggers])
 
 
-vendors = interfaces.values()
+class Vendor:
+    """
+        Abstracts a single vendor.
+
+        Each vendor has single (aggregated) upstream and downstream.
+    """
+    def __init__(self, name, upstream, downstream):
+        self.name = name
+        self.upstream = upstream
+        self.downstream = downstream
+
+    def update(self, updater):
+        self.upstream.update(updater)
+        self.downstream.update(updater)
+
+    def result(self):
+        return {"upstream" : self.upstream.result(),
+                "downstream" : self.downstream.result() }
+
 
 def single_update(vendors):
     update = Updater()
@@ -76,7 +109,23 @@ def single_update(vendors):
     update.refresh(byteblower.ByteBlower.InstanceGet())
 
     for v in vendors:
-        print(v.result())
+        print("%s, %s" % (v.name, str(v.result())))
+
+
+API = byteblower.ByteBlower.InstanceGet()
+SERVER = API.ServerAdd("byteblower-dev-1300-2.lab.byteblower.excentis.com")
+# A DSL to configure the system
+
+vendors = [Vendor('Intel',
+                  upstream = TriggerGroup(
+                     PortTrigger(SERVER, 'nontrunk-1', ''), 
+                     PortTrigger(SERVER, 'nontrunk-1', '') ), 
+                  downstream = TriggerGroup(
+                     PortTrigger(SERVER, 'nontrunk-1', ''), 
+                      )
+                  )
+            ]                  
+
 
 for _ in xrange(100):
     single_update(vendors)
