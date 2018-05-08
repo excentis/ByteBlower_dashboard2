@@ -15,7 +15,6 @@
     "socket.io-client": "^2.1.0"
   },
   "scripts": {
-    "start-prod": "NODE_ENV=production react",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
