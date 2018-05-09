@@ -100,6 +100,11 @@ class Vendor:
         return {"upstream" : self.upstream.result(),
                 "downstream" : self.downstream.result() }
 
+    def post_results(self, base_url):
+        specific = base_url + "/" + self.name
+        r = requests.post(specific, data = self.result())
+
+
 
 def single_update(vendors):
     update = Updater()
@@ -110,19 +115,19 @@ def single_update(vendors):
 
     for v in vendors:
         print("%s, %s" % (v.name, str(v.result())))
+        v.post_results('http://10.1.1.17')
 
 
+# A DSL to configure the system
 API = byteblower.ByteBlower.InstanceGet()
 SERVER = API.ServerAdd("byteblower-dev-1300-2.lab.byteblower.excentis.com")
-# A DSL to configure the system
 
-vendors = [Vendor('Intel',
+vendors = [Vendor('intel',
                   upstream = TriggerGroup(
                      PortTrigger(SERVER, 'nontrunk-1', ''), 
                      PortTrigger(SERVER, 'nontrunk-1', '') ), 
                   downstream = TriggerGroup(
-                     PortTrigger(SERVER, 'nontrunk-1', ''), 
-                      )
+                     PortTrigger(SERVER, 'nontrunk-1', '') ),
                   )
             ]                  
 
