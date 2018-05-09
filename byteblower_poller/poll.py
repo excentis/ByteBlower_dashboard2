@@ -111,19 +111,21 @@ class PortTrigger(object):
         bytes_to_bits = 8
         physical_count = (bytes + (frame_overhead * packets)) * bytes_to_bits 
 
-        global logger
-        logline = "%d, %s, %s, %s, %s, %d, %d, %d, %d" % (
-                last_interval.TimestampGet(),
-                self.detail,
-                self.server_name,
-                self.bb_interface,
-                self.bpf, 
-                bytes,
-                packets,
-                min_framesize,
-                max_framesize )
-                        
-        logger.log(logline)
+        if bytes > 0:
+            global logger
+            logline = "%d, %s, %s, %s, %s, %d, %d, %d, %d" % (
+                    last_interval.TimestampGet(),
+                    self.detail,
+                    self.server_name,
+                    self.bb_interface,
+                    self.bpf, 
+                    bytes,
+                    packets,
+                    min_framesize,
+                    max_framesize )
+            print(logline)
+            logger.log(logline)
+    
         return physical_count / sample_duration
 
 class TriggerGroup(object): 
