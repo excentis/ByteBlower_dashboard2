@@ -2,6 +2,7 @@ import byteblowerll.byteblower as byteblower
 import requests
 import time
 
+WEBSERVER = 'http://10.1.1.17'
 class Updater:
     """
         A helper class to fetch the results from the ByteBlower servers
@@ -137,7 +138,7 @@ def single_update(vendors):
 
     for v in vendors:
         print("%s, %s" % (v.name, str(v.result())))
-        v.post_results('http://10.1.1.17')
+        v.post_results(WEBSERVER)
 
 
 # A DSL to configure the system
@@ -152,10 +153,11 @@ def bb_server(address):
 SERVER = bb_server("byteblower-dev-1300-2.lab.byteblower.excentis.com")
 #SERVER = bb_server("byteblower-tutorial-1300.lab.byteblower.excentis.com")
 
-bb_cpe1 = bb_server("byteblower-iop-CPE1.interop.excentis.com")
-bb_cpe2 = bb_server("byteblower-iop-CPE2.interop.excentis.com")
-bb_nsi1 = bb_server("byteblower-iop-NSI1.interop.excentis.com")
-bb_nsi2 = bb_server("byteblower-iop-NSI2.interop.excentis.com")
+bb_cpe1 = bb_server("byteblower-iop-CPE-1.interop.excentis.com")
+bb_cpe2 = bb_server("byteblower-iop-CPE-2.interop.excentis.com")
+bb_nsi1 = bb_server("byteblower-iop-NSI-1.interop.excentis.com")
+#bb_nsi2 = bb_server("byteblower-iop-NSI-2.interop.excentis.com")
+bb_nsi2 = bb_server("10.7.0.22")
 
 
 all_nontrunks = ['nontrunk-1', 'nontrunk-2', 'nontrunk-3', 'nontrunk-4']
@@ -229,7 +231,7 @@ vendors = [Vendor('intel',
                      all_nsi_byteblowers,
                      all_nontrunks,
                      ['ip dst 10.%d.254.19' % d for d in range(240,250)]),
-                  downstream = TriggerGroup.Combinatorial( 
+                  downstream = TriggerGroup.combinatorial( 
                       [bb_cpe1],
                       ['trunk-4-%d' % d for d in range(1,13)]))
             ]
@@ -242,17 +244,7 @@ vendors = [Vendor('intel',
 #                  )
 #            ]                  
 #
-vendors = [Vendor('intel',
-                  upstream = TriggerGroup.combinatorial(
-                      [SERVER],
-                      ['nontrunk-1', 'nontrunk-2']),
-                  downstream = 
-                     PortTrigger(SERVER, 'nontrunk-1', '') ,
-                  )
-    ]  
-
-
-for _ in xrange(100):
+while True:
     single_update(vendors)
     time.sleep(0.9)
 
