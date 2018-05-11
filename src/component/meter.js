@@ -53,7 +53,7 @@ const valueLabelStyle = {
                         label="downstream | Mbps"
                         value={Number(downstream / 1000000).toFixed(2)}
                         max={4000}
-                        width={150}
+                        width={200}
                         height={200}
                         color={"#00adef"}
                         valueLabelStyle={valueLabelStyle}
@@ -63,7 +63,7 @@ const valueLabelStyle = {
                     <Gauge
                         label="upstream | Mbps"
                         value={Number(upstream / 1000000).toFixed(2)}
-                        width={160}
+                        width={200}
                         max={1500}
                         height={200}
                         color={"#00adef"}
