@@ -48,7 +48,7 @@ const topLabelStyle = {
         return (
             <Grid.Column width={3}>
                 <Segment>
-                    <Image className="widget widget-big-image" src={`./images/logo.${roomName.toLowerCase()}.png`}/>
+                    <Image className="widget widget-big-image" src={`./images/logo.${roomName.toLowerCase()}.png`} />
                 </Segment>
                 <Segment textAlign='center'>
 
@@ -56,7 +56,7 @@ const topLabelStyle = {
                         label="downstream | Mbps"
                         value={Number(downstream / 1000000).toFixed(2)}
                         max={4000}
-                        width={250}
+                        width={200}
                         height={250}
                         color={"#00adef"}
                         valueLabelStyle={valueLabelStyle}
@@ -66,7 +66,7 @@ const topLabelStyle = {
                     <Gauge
                         label="upstream | Mbps"
                         value={Number(upstream / 1000000).toFixed(2)}
-                        width={250}
+                        width={200}
                         max={1500}
                         height={250}
                         color={"#00adef"}

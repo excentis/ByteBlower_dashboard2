@@ -23,10 +23,10 @@ class App extends Component {
             <div>
                 <Segment>
                     <Grid>
-                        <Grid.Column width={6}>
+                        <Grid.Column width={6} textAlign="center">
                             <img src="./images/ByteBlower-by-Excentis-small-transparent.png" alt=""/>
                         </Grid.Column>
-                        <Grid.Column width={10} className="widget-title">
+                        <Grid.Column width={10} className="widget-title" textAlign="center">
                             <Header as="h1" className="title">Excentis DOCSIS 3.1 Interop 2018</Header>
                             <Header as="h3" className="text">Cable Modem Traffic Overview</Header>
                         </Grid.Column>
