@@ -34,14 +34,12 @@ class App extends Component {
                 </Segment>
                 <Grid columns='equal' centered>
                         <Meter roomName="avm" socket={socket}/>
-                        <Meter roomName="askey" socket={socket}/>
                         <Meter roomName="sagemcom" socket={socket}/>
                         <Meter roomName="technicolor" socket={socket}/>
                         <Meter roomName="compal" socket={socket}/>
                         <Meter roomName="intel" socket={socket}/>
 
                         <Meter roomName="broadcom" socket={socket}/>
-                        <Meter roomName="hitron" socket={socket}/>
                         <Meter roomName="ubee" socket={socket}/>
                 </Grid>
 
