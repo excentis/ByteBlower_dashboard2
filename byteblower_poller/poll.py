@@ -38,8 +38,8 @@ class Updater(object):
         
         Call the refresh method regularly will fetch the new snapshots from
         the ByteBlower server and remove old ones.
-
     """
+
     def __init__ (self):
         self.update = []
 
@@ -87,7 +87,7 @@ class PortTrigger(object):
     
     def result(self):
         """
-            Current bandwidht on the interface.
+            Current bandwidth on the interface.
             Returned in bits/s, includes frame overhead.
             Filling the line with 10 Gbit/s will display 10 Gbit/s
         """
@@ -163,9 +163,15 @@ class TriggerGroup(object):
             @arg bpf_filters a list of BPF filters. Default everything is matched.
         """
         port_list = []
-        for server in bb_servers:
-            for interface in interfaces:
-                for bpf in bpf_filters: 
+
+        # Make a list out of everything.
+        interface_list = list(interfaces)
+        bpfs = list(bpf_filters)
+        servers = list(bb_servers)
+
+        for server in servers:
+            for interface in interface_list:
+                for bpf in bpfs: 
                     port = PortTrigger(server, interface, bpf)
                     port_list.append(port)
         return TriggerGroup(*port_list)                    
@@ -229,8 +235,6 @@ def bb_server(address):
         print("Can't reach %s" % address)
 
 # The actual config
-SERVER = bb_server("byteblower-dev-1300-2.lab.byteblower.excentis.com")
-#SERVER = bb_server("byteblower-tutorial-1300.lab.byteblower.excentis.com")
 
 bb_cpe1 = bb_server("byteblower-iop-CPE-1.interop.excentis.com")
 bb_cpe2 = bb_server("byteblower-iop-CPE-2.interop.excentis.com")
@@ -281,7 +285,7 @@ vendors = [Vendor('intel',
                   downstream = TriggerGroup.combinatorial( 
                       [bb_cpe2],
                       ['trunk-4-%d' % d for d in range(1,13)])),
-            Vendor('cbn',
+            Vendor('compal',
                 upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
                      all_nontrunks,
@@ -319,12 +323,13 @@ vendors = [Vendor('intel',
                      all_nontrunks),
                   downstream = TriggerGroup.combinatorial( 
                       [bb_cpe1, bb_cpe2],
-                      itertools.chain ( *[['trunk-%d-%d' % (interface, trunk) 
+                      list(itertools.chain ( *[['trunk-%d-%d' % (interface, trunk) 
                                                     for trunk in range(1,48)] 
-                                                    for interface in [1,2,3,4]]))
+                                                    for interface in [1,2,3,4]])))
                   )
             ]
 print("Has %d triggers" % port_trigger_count)
+
 while True:
     print('update ' + str(datetime.datetime.now()))
     single_update(vendors)
