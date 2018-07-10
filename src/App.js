@@ -33,14 +33,17 @@ class App extends Component {
                     </Grid>
                 </Segment>
                 <Grid columns='equal' centered>
-                        <Meter roomName="avm" socket={socket}/>
-                        <Meter roomName="sagemcom" socket={socket}/>
-                        <Meter roomName="technicolor" socket={socket}/>
-                        <Meter roomName="compal" socket={socket}/>
-                        <Meter roomName="intel" socket={socket}/>
+                    /*
+                    * ADD VENDORS HERE
+                    */
+                        <Meter roomName="vendor1" socket={socket}/>
+                        <Meter roomName="vendor2" socket={socket}/>
+                        <Meter roomName="vendor3" socket={socket}/>
+                        <Meter roomName="vendor4" socket={socket}/>
+                        <Meter roomName="vendor5" socket={socket}/>
 
-                        <Meter roomName="broadcom" socket={socket}/>
-                        <Meter roomName="ubee" socket={socket}/>
+                        <Meter roomName="vendor6" socket={socket}/>
+                        <Meter roomName="vendor7" socket={socket}/>
                 </Grid>
 
             </div>
