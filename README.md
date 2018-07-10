@@ -26,7 +26,7 @@ Then add this code to the Grid Tags in the file:
      <Meter roomName="<<VENDOR NAME>>" socket={socket}/>
 
 ```
-Also add an image of to the public/images folder
+Also add an image of the vendor to the public/images folder
 
 > Script Side
 ```sh
