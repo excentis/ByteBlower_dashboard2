@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a94f71f7-0055-4a8d-9305-b3b88567d1d0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/logo_vendor5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/logo_vendor6.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.askey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.avm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.bcm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.broadcom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.cbn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.compal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.hitron.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.huawei.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.humax.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.intel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.sagemcom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.technicolor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.ubee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/meter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/meter.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="meter.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="meter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/meter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+            <state relative-caret-position="283">
+              <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -39,7 +53,7 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="40">
               <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -57,16 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logo.askey.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/images/logo.askey.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+            <state relative-caret-position="365">
+              <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -140,13 +149,13 @@
         <option value="$PROJECT_DIR$/build/index.html" />
         <option value="$PROJECT_DIR$/loop.sh" />
         <option value="$PROJECT_DIR$/server/server.js" />
-        <option value="$PROJECT_DIR$/src/component/meter.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/byteblower_poller/poll.py" />
         <option value="$PROJECT_DIR$/start_all.sh" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/component/meter.js" />
       </list>
     </option>
   </component>
@@ -187,6 +196,17 @@
             <path>
               <item name="dashboard-excentis" type="b2602c69:ProjectViewProjectNode" />
               <item name="dashboard-excentis" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dashboard-excentis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dashboard-excentis" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dashboard-excentis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dashboard-excentis" type="462c0819:PsiDirectoryNode" />
               <item name="byteblower_poller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -205,6 +225,12 @@
               <item name="dashboard-excentis" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="dashboard-excentis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dashboard-excentis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -222,6 +248,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/images" />
       <recent name="$PROJECT_DIR$" />
@@ -253,12 +280,12 @@
       <workItem from="1525001158148" duration="3478000" />
       <workItem from="1525329957610" duration="20728000" />
       <workItem from="1525788315877" duration="1781000" />
-      <workItem from="1531209360109" duration="2607000" />
+      <workItem from="1531209360109" duration="3193000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35214000" />
+    <option name="totallyTimeSpent" value="35800000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -503,13 +530,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-svg-gauge/lib/Gauge.d.ts" />
     <entry file="file://$PROJECT_DIR$/node_modules/react-svg-gauge/lib/Gauge.js" />
-    <entry file="file://$PROJECT_DIR$/src/component/meter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -538,6 +558,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/logo.askey.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -545,12 +568,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/logo.askey.png">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
+        <state relative-caret-position="40">
           <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -558,10 +585,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/src/component/meter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+        <state relative-caret-position="283">
+          <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
         </state>
       </provider>
     </entry>

@@ -48,7 +48,7 @@ const topLabelStyle = {
         return (
             <Grid.Column width={3}>
                 <Segment>
-                    <Image className="widget widget-big-image" src={`./images/logo.${roomName.toLowerCase()}.png`} />
+                    <Image className="widget widget-big-image" src={`./images/logo_${roomName.toLowerCase()}.png`} />
                 </Segment>
                 <Segment textAlign='center'>
 
