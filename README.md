@@ -12,7 +12,7 @@ $ npm start
 ```
 npm start will set NODE_ENV to production and run the server
 
-before npm start a hook will be exececuted named 'prestart' this will install all packages and create the build environment.
+before npm start a hook will be executed named 'prestart' this will install all packages and create the build environment.
 
 # Using the project
 ## updating dashboards
