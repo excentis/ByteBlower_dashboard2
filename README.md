@@ -1,4 +1,4 @@
-![Banner] (/public/images/readme_screenshot.png)
+![Banner](./public/images/readme_screenshot.png)
 
 # Required Software
 * Git
