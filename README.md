@@ -26,12 +26,11 @@ Then add this code to the Grid Tags in the file:
      <Meter roomName="<<VENDOR NAME>>" socket={socket}/>
 
 ```
+Also add an image of to the public/images folder
 
 > Script Side
 ```sh
 $ cd byteblower-poller
 $ nano/vim poller.py
 ```
-## Adding vendors
-
-## running scripts
+Change the IP address at the top CTRL+F for 'vendors' and read comments

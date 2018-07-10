@@ -18,6 +18,9 @@ class App extends Component {
     }
 
     render() {
+        /*
+         * ADD VENDORS BELOW
+         */
         const {socket} = this.state;
         return (
             <div>
@@ -33,9 +36,6 @@ class App extends Component {
                     </Grid>
                 </Segment>
                 <Grid columns='equal' centered>
-                    /*
-                    * ADD VENDORS HERE
-                    */
                         <Meter roomName="vendor1" socket={socket}/>
                         <Meter roomName="vendor2" socket={socket}/>
                         <Meter roomName="vendor3" socket={socket}/>
