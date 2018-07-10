@@ -6,10 +6,10 @@ const io = require('socket.io')(http);
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 8080
 
 //let the server server static files
-app.use(express.static(path.join(__dirname,'../build')));
+app.use(express.static(path.join(__dirname,'/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
