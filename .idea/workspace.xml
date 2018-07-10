@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a94f71f7-0055-4a8d-9305-b3b88567d1d0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/logo_vendor5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/logo_vendor6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.askey.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.avm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.bcm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.broadcom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.cbn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.compal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.hitron.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.huawei.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.humax.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.intel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.sagemcom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.technicolor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.ubee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/meter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/meter.js" afterDir="false" />
-    </list>
+    <list default="true" id="a94f71f7-0055-4a8d-9305-b3b88567d1d0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -35,8 +17,8 @@
       <file leaf-file-name="meter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/meter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
+            <state relative-caret-position="268">
+              <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -280,18 +262,17 @@
       <workItem from="1525001158148" duration="3478000" />
       <workItem from="1525329957610" duration="20728000" />
       <workItem from="1525788315877" duration="1781000" />
-      <workItem from="1531209360109" duration="3193000" />
+      <workItem from="1531209360109" duration="3512000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35800000" />
+    <option name="totallyTimeSpent" value="36119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -300,7 +281,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32971507" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Mongo Explorer" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.29333332" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.29333332" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
@@ -587,8 +568,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/meter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
+        <state relative-caret-position="268">
+          <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
         </state>
       </provider>
     </entry>
