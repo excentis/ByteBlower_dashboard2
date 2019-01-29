@@ -92,6 +92,9 @@ class PortTrigger(object):
         @detail
         A thin wrapper around the ByteBlower trigger.
         Mostly useful for creation, cleanup and easy reading out.
+
+        You'll use the abstractions further in the file to
+        aggregate multiple PortTriggers.
     """
     def __init__(self, bb_server, bb_interface, bpf):
         self.port = bb_server.PortCreate(bb_interface)
@@ -105,7 +108,6 @@ class PortTrigger(object):
 
         global port_trigger_count
         port_trigger_count += 1
-
     
     def update(self, updater):
         updater.add(self.trigger.ResultHistoryGet())
@@ -155,7 +157,8 @@ class PortTrigger(object):
 
 class TriggerGroup(object): 
     """
-        A group of port triggers. Responsible for aggregating several results.        
+        A group of port triggers. Responsible for aggregating several results
+        into one.
     """
     def __init__(self, *port_triggers):
         self.triggers = port_triggers
@@ -178,10 +181,11 @@ class TriggerGroup(object):
     @staticmethod
     def combinatorial(bb_servers, interfaces, bpf_filters = ['']):
         """
-            A factory method to easily create a Group of lots of PortTriggers.
+            A factory method to easily create a group of lots of PortTriggers.
 
             The group will match all in the filters on all of the interfaces on all
             of the servers.
+
 
             @arg bb_server a list of  byteblower servers
             @arg interfaces a list of byteblower interfaces.
@@ -210,9 +214,13 @@ class TriggerGroup(object):
 
 class Vendor(object):
     """
-        Abstracts a single vendor.
+        Abstracts to a single vendor.
+
+        (Remember this test was written for an interop with many vendors)
 
         Each vendor has single (aggregated) upstream and downstream.
+        You can use the triggergroups to combine multiple interfaces/ports/filters.
+
     """
     def __init__(self, name, upstream, downstream, debug= False):
         self.name = name
