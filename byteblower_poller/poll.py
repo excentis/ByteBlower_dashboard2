@@ -1,3 +1,22 @@
+"""
+    This pyhton script fills the bandwidth meters in the dashboard . It
+    was used during the interop at Excentis.
+
+    Each of the bandwidth meters reprents a single Vendor at the interop.
+    In this script you can configure all of the interfaces on all of the
+    ByteBlowers used by this vendor. This configuration is done with a
+    BPF filter.
+    
+    Additionally, all traffic is logged to file. This file
+    can be used to for later analysis.
+
+    To get this script working you, you'll need to
+
+    1. Change the IP address of the webserver.
+    2. Pick where you want to log the traffic.
+    3. Configure the vendor list. 
+
+"""
 import byteblowerll.byteblower as byteblower
 import datetime
 import requests
@@ -245,17 +264,18 @@ bb_nsi2 = bb_server("10.7.0.22")
 
 all_nontrunks = ['nontrunk-1', 'nontrunk-2', 'nontrunk-3', 'nontrunk-4']
 all_nsi_byteblowers = [bb_nsi1, bb_nsi2]
-“”””
-TO ADD A NEW VENDOR ADD CODE BELOW TO THE ARRAY
-Vendor('<<VENDOR NAME>>',
-                  upstream = TriggerGroup.combinatorial(
-                     all_nsi_byteblowers,
-                     all_nontrunks,
-                     ['ip dst <<IP ADDRESS>>' % d for d in range(240,250)]),
-                  downstream = TriggerGroup.combinatorial(
-                      [bb_cpe1],
-                      ['trunk-2-%d' % d for d in range(1,5)])),
-“””
+
+## TO ADD A NEW VENDOR ADD CODE BELOW TO THE ARRAY
+## Vendor('<<VENDOR NAME>>',
+##                   upstream = TriggerGroup.combinatorial(
+##                      all_nsi_byteblowers,
+##                      all_nontrunks,
+##                      ['ip dst <<IP ADDRESS>>' % d for d in range(240,250)]),
+##                   downstream = TriggerGroup.combinatorial(
+##                       [bb_cpe1],
+##                       ['trunk-2-%d' % d for d in range(1,5)])),
+## 
+
 vendors = [Vendor('vendor1',
                   upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
