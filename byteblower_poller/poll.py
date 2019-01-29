@@ -56,12 +56,13 @@ class DebugLogger(object):
 logger = DebugLogger()
 class Updater(object):
     """
-        A helper class to fetch the results from the ByteBlower servers
+        A helper class to performantly retrieve the results from 
+        the ByteBlower servers.
 
-        Standard usage is to offer this class to every other that has API 
-        objects needing to be managed. 
-        
-        Call the refresh method regularly will fetch the new snapshots from
+        Standard usage is to add all ByteBlower API you want to 
+        refresh.
+       
+        Thereafter call the refresh method regularly to fetch the new snapshots from
         the ByteBlower server and remove old ones.
     """
 
@@ -77,7 +78,7 @@ class Updater(object):
 
     def refresh(self, api):
         """
-            Does the refresh.
+            Does the actual refresh.
         """
         special_list = byteblower.AbstractRefreshableResultList()
         [b.Clear() for b in self.update]
