@@ -138,7 +138,7 @@ class PortTrigger(object):
 
         if bytes > 0:
             global logger
-            logline = "%d, %s, %s, %s, %s, %d, %d, %d, %d" % (
+            logline = '%d, %s, %s, %s, %s, %d, %d, %d, %d' % (
                     last_interval.TimestampGet(),
                     self.detail,
                     self.server_name,
@@ -219,8 +219,8 @@ class Vendor(object):
         self.upstream = upstream
         self.downstream = downstream
 
-        upstream.detail = "up " + name
-        downstream.detail = "down " + name
+        upstream.detail = 'up ' + name
+        downstream.detail = 'down ' + name
 
         self.debug_trigger = debug
 
@@ -229,13 +229,13 @@ class Vendor(object):
         self.downstream.update(updater)
 
     def result(self):
-        return {"upstream" : self.upstream.result(),
-                "downstream" : self.downstream.result() }
+        return {'upstream' : self.upstream.result(),
+                'downstream' : self.downstream.result() }
 
     def post_results(self, base_url):
         result = self.result()
         if not self.debug_trigger:
-            specific = base_url + "/" + self.name
+            specific = base_url + '/' + self.name
             r = requests.post(specific, data = result) 
 
 
@@ -261,11 +261,13 @@ def bb_server(address):
 
 # The actual config
 
-bb_cpe1 = bb_server("byteblower-iop-CPE-1.interop.excentis.com")
-bb_cpe2 = bb_server("byteblower-iop-CPE-2.interop.excentis.com")
-bb_nsi1 = bb_server("byteblower-iop-NSI-1.interop.excentis.com")
-#bb_nsi2 = bb_server("byteblower-iop-NSI-2.interop.excentis.com")
-bb_nsi2 = bb_server("10.7.0.22")
+## A couple helper variables. 
+## These make the config further easier to make.
+bb_cpe1 = bb_server('byteblower-iop-CPE-1.interop.excentis.com')
+bb_cpe2 = bb_server('byteblower-iop-CPE-2.interop.excentis.com')
+bb_nsi1 = bb_server('byteblower-iop-NSI-1.interop.excentis.com')
+#bb_nsi2 = bb_server('byteblower-iop-NSI-2.interop.excentis.com')
+bb_nsi2 = bb_server('10.7.0.22')
 
 
 all_nontrunks = ['nontrunk-1', 'nontrunk-2', 'nontrunk-3', 'nontrunk-4']
@@ -282,6 +284,7 @@ all_nsi_byteblowers = [bb_nsi1, bb_nsi2]
 ##                       ['trunk-2-%d' % d for d in range(1,5)])),
 ## 
 
+## Now the actual config.
 vendors = [Vendor('vendor1',
                   upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
@@ -365,10 +368,13 @@ vendors = [Vendor('vendor1',
                                                     for interface in [1,2,3,4]])))
                   )
             ]
-print("Has %d triggers" % port_trigger_count)
+
+### Start polling.
+###
+print('Has %d triggers' % port_trigger_count)
 
 while True:
-    print('update ' + str(datetime.datetime.now()))
+    print('Update %s' % (str(datetime.datetime.now())))
     single_update(vendors)
     time.sleep(0.9)
 
