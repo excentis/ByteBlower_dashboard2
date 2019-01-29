@@ -27,6 +27,9 @@ import time
 import itertools
 
 WEBSERVER = 'http://10.1.1.17' # CHANGE TO YOUR IP
+
+# Set the DEBUG_FILE to None to disable logging.
+# DEBUG_FILE = None
 DEBUG_FILE = '/tmp/interop_traffic.log'
 
 class DebugLogger(object):
@@ -43,7 +46,7 @@ class DebugLogger(object):
 
     def log(self, log_line):
         self.logs.append(log_line)
-        if len(self.logs) > 1024:
+        if len(self.logs) > 1024 and DEBUG_FILE:
             with open(DEBUG_FILE, 'a') as f:
                 for line in self.logs:
                     f.write(line + "\n")
