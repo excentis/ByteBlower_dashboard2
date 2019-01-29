@@ -1,11 +1,14 @@
 """
-    This pyhton script fills the bandwidth meters in the dashboard . It
+    This python script fills the bandwidth meters in the dashboard. It
     was used during the interop at Excentis.
 
     Each of the bandwidth meters reprents a single Vendor at the interop.
     In this script you can configure all of the interfaces on all of the
     ByteBlowers used by this vendor. This configuration is done with a
-    BPF filter.
+    BPF filter. 
+
+    The results are POST'ed to the dashboard every second. You might need
+    to install python-requests extra.
     
     Additionally, all traffic is logged to file. This file
     can be used to for later analysis.
