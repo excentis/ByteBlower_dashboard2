@@ -42,9 +42,10 @@ app.post('/rp/:phyName', (req, res) => {
     let phy = req.params.phyName;
 
     let pingResponse = req.body.pingResponse
+    let phyIp = req.body.ip
     console.log(pingResponse)
     console.log('\nphy: ' + phy + '\tping response: ' + pingResponse);
-    io.to(phy).emit(phy, {pingResponse});
+    io.to(phy).emit(phy, {pingResponse, phyIp});
     res.send({});
 })
 
@@ -55,9 +56,9 @@ io.on('connection', (socket) => {
         console.log(room + ' has joined');
     })
 
-    socket.on('remotePhy', (name_ip) => {
-        socket.join(name_ip[0]);
-        console.log(name_ip[0] + ' has joined');
+    socket.on('remotePhy', (name) => {
+        socket.join(name);
+        console.log(name+ ' has joined');
     })
 })
 

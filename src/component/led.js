@@ -5,23 +5,24 @@ class Led extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: 'down'
+            status: 'down',
+            ip: '',
         }
     }
 
     componentDidMount() {
-        const {remotePhyName, remotePhyIp, socket} = this.props;
-        socket.emit('remotePhy', [remotePhyName, remotePhyIp]);
+        const {remotePhyName, socket} = this.props;
+        socket.emit('remotePhy', remotePhyName);
 
         socket.on(remotePhyName, (data) => {
             console.log(data.pingResponse);
-            this.setState({status: data.pingResponse})
+            this.setState({status: data.pingResponse, ip: data.phyIp})
         })
     }
 
     render() {
-        const {status} = this.state;
-        const {remotePhyName, remotePhyIp} = this.props;
+        const {status, ip} = this.state;
+        const {remotePhyName} = this.props;
 
         let led;
 
@@ -33,6 +34,9 @@ class Led extends React.Component {
 
         return (
             <Grid.Column width={2}>
+                <Segment>
+                    <p>ip: {ip}</p>
+                </Segment>
                 <Segment>
                     <Image className="widget widget widget-big-image" src={`./images/${remotePhyName.toLowerCase().replace(' ', '_')}.png`} />
 

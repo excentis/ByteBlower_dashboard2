@@ -39,17 +39,17 @@ class App extends Component {
                 <Grid columns='equal' centered>
                     <Grid.Row>
                         {/* Change IP addresses to correct ones */}
-                        <Led remotePhyName="phy1" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy2" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy3" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy4" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy5" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy6" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy7" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy8" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy9" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy10" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="phy11" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy1"  socket={socket}></Led>
+                        <Led remotePhyName="phy2"  socket={socket}></Led>
+                        <Led remotePhyName="phy3"  socket={socket}></Led>
+                        <Led remotePhyName="phy4"  socket={socket}></Led>
+                        <Led remotePhyName="phy5"  socket={socket}></Led>
+                        <Led remotePhyName="phy6"  socket={socket}></Led>
+                        <Led remotePhyName="phy7"  socket={socket}></Led>
+                        <Led remotePhyName="phy8"  socket={socket}></Led>
+                        <Led remotePhyName="phy9"  socket={socket}></Led>
+                        <Led remotePhyName="phy10" socket={socket}></Led>
+                        <Led remotePhyName="phy11" socket={socket}></Led>
                     </Grid.Row>
 
                     <Grid.Row>
