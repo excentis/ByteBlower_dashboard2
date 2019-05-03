@@ -40,17 +40,17 @@ TODO: Change IP addresses to correct ones
 """
 
     
-phy1 = RemotePhy('BKtel', '10.3.3.243')
-phy2 = RemotePhy('Casa', '10.3.3.243')
-phy3 = RemotePhy('Cisco', '10.3.3.243')
-phy4 = RemotePhy('Commscope', '10.3.3.243')
-phy5 = RemotePhy('DCT DELTA', '10.3.3.243')
-phy6 = RemotePhy('DEV Systemtechnik', '10.3.3.243')
-phy7 = RemotePhy('Huawei', '10.3.3.243')
-phy8 = RemotePhy('Nokia', '10.3.3.243')
-phy9 = RemotePhy('Teleste', '10.3.3.243')
-phy10 = RemotePhy('Vecima Networks', '10.3.3.243')
-phy11 = RemotePhy('Vector Technologies', '10.3.3.243')
+phy1 = RemotePhy('phy1', '10.3.3.243') # BKtel
+phy2 = RemotePhy('phy2', '10.3.3.243') # Casa
+phy3 = RemotePhy('phy3', '10.3.3.243') # Cisco
+phy4 = RemotePhy('phy4', '10.3.3.243') # Commscope
+phy5 = RemotePhy('phy5', '10.3.3.243') # Delta
+phy6 = RemotePhy('phy6', '10.3.3.243') # Dev Systemtechnik
+phy7 = RemotePhy('phy7', '10.3.3.243') # Huawei
+phy8 = RemotePhy('phy8', '10.3.3.243') # Nokia
+phy9 = RemotePhy('phy9', '10.3.3.243') # teleste
+phy10 = RemotePhy('phy10', '10.3.3.243') # vecima
+phy11 = RemotePhy('phy11', '10.3.3.243') # vector
 
 phys = [phy1, phy2, phy3, phy4, phy5, phy6, phy7, phy8, phy9, phy10, phy11]
 while True:

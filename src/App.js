@@ -39,26 +39,26 @@ class App extends Component {
                 <Grid columns='equal' centered>
                     <Grid.Row>
                         {/* Change IP addresses to correct ones */}
-                        <Led remotePhyName="BKtel" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Casa" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Cisco" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Commscope" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="DCT DELTA" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="DEV Systemtechnik" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Huawei" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Nokia" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Teleste" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Vecima Networks" remotePhyIp="10.3.3.243"  socket={socket}></Led>
-                        <Led remotePhyName="Vector Technologies" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy1" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy2" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy3" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy4" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy5" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy6" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy7" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy8" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy9" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy10" remotePhyIp="10.3.3.243"  socket={socket}></Led>
+                        <Led remotePhyName="phy11" remotePhyIp="10.3.3.243"  socket={socket}></Led>
                     </Grid.Row>
 
                     <Grid.Row>
-                        <Meter roomName="AVM" socket={socket}/>
-                        <Meter roomName="Broadcom" socket={socket}/>
-                        <Meter roomName="Hitron" socket={socket}/>
-                        <Meter roomName="Ubee Interactive" socket={socket}/>
-                        <Meter roomName="Sagemcom" socket={socket}/>
-                        <Meter roomName="Technicolor" socket={socket}/>
+                        <Meter roomName="vendor1" socket={socket}/>
+                        <Meter roomName="vendor2" socket={socket}/>
+                        <Meter roomName="vendor3" socket={socket}/>
+                        <Meter roomName="vendor4" socket={socket}/>
+                        <Meter roomName="vendor5" socket={socket}/>
+                        <Meter roomName="vendor6" socket={socket}/>
                     </Grid.Row>
                        
                 </Grid>
