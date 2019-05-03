@@ -53,14 +53,12 @@ class App extends Component {
                     </Grid.Row>
 
                     <Grid.Row>
-                        <Meter roomName="vendor1" socket={socket}/>
-                        <Meter roomName="vendor2" socket={socket}/>
-                        <Meter roomName="vendor3" socket={socket}/>
-                        <Meter roomName="vendor4" socket={socket}/>
-                        <Meter roomName="vendor5" socket={socket}/>
-
-                        <Meter roomName="vendor6" socket={socket}/>
-                        <Meter roomName="vendor7" socket={socket}/>
+                        <Meter roomName="AVM" socket={socket}/>
+                        <Meter roomName="Broadcom" socket={socket}/>
+                        <Meter roomName="Hitron" socket={socket}/>
+                        <Meter roomName="Ubee Interactive" socket={socket}/>
+                        <Meter roomName="Sagemcom" socket={socket}/>
+                        <Meter roomName="Technicolor" socket={socket}/>
                     </Grid.Row>
                        
                 </Grid>

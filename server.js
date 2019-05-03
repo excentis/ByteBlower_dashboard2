@@ -1,3 +1,9 @@
+/**
+ * Wat modems betreft hebben we dit jaar AVM, Broadcom Limited, Hitron, Sagemcom, Technicolor and Ubee Interactive.
+
+   Voor CCAP/Remote PHY hebben we: BKtel, Casa, Cisco, Commscope, DCT DELTA, DEV Systemtechnik, Huawei, Nokia, Teleste, Vecima Networks and Vector Technologies.   
+ */
+
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);

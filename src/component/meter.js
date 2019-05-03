@@ -47,14 +47,14 @@ const topLabelStyle = {
             this.setState({upstream: up, downstream: down, total_up: total_u, total_down: total_d});
         })
     }
-
+    /** "prestart": "npm install && npm run build", */
     render() {
         const {upstream, downstream, total_up, total_down} = this.state;
         const {roomName} = this.props;
         return (
             <Grid.Column width={3}>
                 <Segment>
-                    <Image className="widget widget-big-image" src={`./images/logo_${roomName.toLowerCase()}.png`} />
+                    <Image className="widget widget-big-image" src={`./images/${roomName.toLowerCase().replace(' ', '_')}.png`} />
                 </Segment>
                 <Segment textAlign='center'>
                     <h5>Total Traffic Sent</h5>

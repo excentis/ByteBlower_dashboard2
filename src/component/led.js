@@ -26,20 +26,19 @@ class Led extends React.Component {
         let led;
 
         if (status == 0){
-            led = <div class="led-green"/>
+            led = <div className="led-green"/>
         } else {
-            led = <div class="led-red"/>
+            led = <div className="led-red"/>
         }
 
         return (
-            <div class='led-container'>
-                <Segment textAlign='center' style={{height: '100%'}}>
-                    <p>{remotePhyName} - {remotePhyIp}</p>
-                    <div class="led-box">
-                        {led}
-                    </div>
+            <Grid.Column width={2}>
+                <Segment>
+                    <Image className="widget widget widget-big-image" src={`./images/${remotePhyName.toLowerCase().replace(' ', '_')}.png`} />
+
+                    {led}
                 </Segment>
-            </div>)
+            </Grid.Column>)
     }
 }
 
