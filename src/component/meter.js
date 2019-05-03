@@ -28,6 +28,8 @@ const topLabelStyle = {
             roomName: '',
             upstream: 0,
             downstream: 0,
+            total_up: 0,
+            total_down: 0
         }
     }
 
@@ -37,18 +39,27 @@ const topLabelStyle = {
         socket.emit('client', roomName);
 
         socket.on(roomName, (data) => {
-            console.log(data);
-            this.setState({upstream: data.upstream, downstream: data.downstream});
+            let up = data.upstream
+            let down = data.downstream
+            const {total_up, total_down} = this.state
+            let total_u = total_up + up
+            let total_d = total_down + down
+            this.setState({upstream: up, downstream: down, total_up: total_u, total_down: total_d});
         })
     }
 
     render() {
-        const {upstream, downstream} = this.state;
+        const {upstream, downstream, total_up, total_down} = this.state;
         const {roomName} = this.props;
         return (
             <Grid.Column width={3}>
                 <Segment>
                     <Image className="widget widget-big-image" src={`./images/logo_${roomName.toLowerCase()}.png`} />
+                </Segment>
+                <Segment textAlign='center'>
+                    <h5>Total Traffic Sent</h5>
+                    <p>Upstream: {(total_up / 1000000000).toFixed(2)} Gb</p>
+                    <p>Downstream: {(total_down/ 1000000000).toFixed(2)} Gb</p>
                 </Segment>
                 <Segment textAlign='center'>
 
