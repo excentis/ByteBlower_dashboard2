@@ -15,8 +15,8 @@
     "socket.io-client": "^2.1.0"
   },
   "scripts": {
-    "prestart": "npm install && npm run build",
-    "start": "export NODE_ENV=production && node server",
+    
+    "start": "set NODE_ENV=production && node server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

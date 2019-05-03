@@ -26,7 +26,7 @@ import requests
 import time
 import itertools
 
-WEBSERVER = 'http://10.1.1.17' # CHANGE TO YOUR IP
+WEBSERVER = 'http://10.1.1.17:8089' # CHANGE TO YOUR IP
 
 # Set the DEBUG_FILE to None to disable logging.
 # DEBUG_FILE = None
@@ -244,7 +244,7 @@ class Vendor(object):
     def post_results(self, base_url):
         result = self.result()
         if not self.debug_trigger:
-            specific = base_url + '/' + self.name
+            specific = base_url + '/v/' + self.name
             r = requests.post(specific, data = result) 
 
 
@@ -377,6 +377,7 @@ vendors = [Vendor('vendor1',
                                                     for interface in [1,2,3,4]])))
                   )
             ]
+
 
 ### Start polling.
 ###

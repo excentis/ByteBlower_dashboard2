@@ -19,7 +19,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'))
 })
 
-app.post('/:client', (req, res) => {
+app.post('/v/:client', (req, res) => {
+    console.log('post request received')
     let client = req.params.client;
 
     let downstream = req.body.downstream;
@@ -30,11 +31,27 @@ app.post('/:client', (req, res) => {
     res.send({});
 })
 
+app.post('/rp/:phyName', (req, res) => {
+    console.log('post request received')
+    let phy = req.params.phyName;
+
+    let pingResponse = req.body.pingResponse
+    console.log(pingResponse)
+    console.log('\nphy: ' + phy + '\tping response: ' + pingResponse);
+    io.to(phy).emit(phy, {pingResponse});
+    res.send({});
+})
+
 io.on('connection', (socket) => {
     console.log('connected');
     socket.on('client', (room) => {
         socket.join(room);
         console.log(room + ' has joined');
+    })
+
+    socket.on('remotePhy', (name_ip) => {
+        socket.join(name_ip[0]);
+        console.log(name_ip[0] + ' has joined');
     })
 })
 
