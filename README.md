@@ -38,3 +38,5 @@ $ nano/vim poller.py
 Change the IP address at the top CTRL+F for 'vendors' and read comments
 
 ![Dashboard](./public/images/dashboard_screenshot.png)
+# excentis_dashboard
+
