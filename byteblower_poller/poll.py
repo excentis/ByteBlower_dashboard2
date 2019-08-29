@@ -26,7 +26,7 @@ import requests
 import time
 import itertools
 
-WEBSERVER = 'http://10.1.1.17:8089' # CHANGE TO YOUR IP
+WEBSERVER = 'http://10.1.1.17:8089/v/' # CHANGE TO YOUR IP
 
 # Set the DEBUG_FILE to None to disable logging.
 # DEBUG_FILE = None
@@ -98,7 +98,12 @@ class PortTrigger(object):
         aggregate multiple PortTriggers.
     """
     def __init__(self, bb_server, bb_interface, bpf):
-        self.port = bb_server.PortCreate(bb_interface)
+        try:
+            self.port = bb_server.PortCreate(bb_interface)
+        except Exception as e:
+            print("Can't create port: %s" % e.getMessage())
+            raise e
+
         self.trigger = self.port.RxTriggerBasicAdd()
         self.trigger.FilterSet(bpf)
 
@@ -202,8 +207,11 @@ class TriggerGroup(object):
         for server in servers:
             for interface in interface_list:
                 for bpf in bpfs: 
-                    port = PortTrigger(server, interface, bpf)
-                    port_list.append(port)
+                    try:
+                        port = PortTrigger(server, interface, bpf)
+                        port_list.append(port)
+                    except:
+                        pass
         return TriggerGroup(*port_list)                    
 
     def update(self, updater):
@@ -244,8 +252,8 @@ class Vendor(object):
     def post_results(self, base_url):
         result = self.result()
         if not self.debug_trigger:
-            specific = base_url + '/v/' + self.name
-            r = requests.post(specific, data = result) 
+            specific = base_url + self.name
+            r = requests.post(specific, json = result) 
 
 
 
@@ -253,9 +261,10 @@ def single_update(vendors):
     update = Updater()
     for v in vendors:
         v.update(update)
-
+    print('Refreshing')
     update.refresh(byteblower.ByteBlower.InstanceGet())
 
+    print('Posting results')
     for v in vendors:
         v.post_results(WEBSERVER)
 
@@ -275,12 +284,21 @@ def bb_server(address):
 bb_cpe1 = bb_server('byteblower-iop-CPE-1.interop.excentis.com')
 bb_cpe2 = bb_server('byteblower-iop-CPE-2.interop.excentis.com')
 bb_nsi1 = bb_server('byteblower-iop-NSI-1.interop.excentis.com')
+bb_nsi2 = bb_server('byteblower-iop-NSI-2.interop.excentis.com')
 #bb_nsi2 = bb_server('byteblower-iop-NSI-2.interop.excentis.com')
-bb_nsi2 = bb_server('10.7.0.22')
+# bb_nsi2 = bb_server('10.7.0.22')
 
 
 all_nontrunks = ['nontrunk-1', 'nontrunk-2', 'nontrunk-3', 'nontrunk-4']
+
 all_nsi_byteblowers = [bb_nsi1, bb_nsi2]
+# Add the NBASE-T trunks on trunk1-49 ..
+all_trunks_interface = TriggerGroup.combinatorial( 
+                        [bb_cpe1, bb_cpe2],
+                        (list(itertools.chain ( *[['trunk-%d-%d' % (interface, trunk) 
+                                                    for trunk in range(1,49)] 
+                                                    for interface in [1,2,3,4]])) 
+                            +  ['trunk-1-%d' % d for d in range(49,57)]))                                             
 
 ## TO ADD A NEW VENDOR ADD CODE BELOW TO THE ARRAY
 ## Vendor('<<VENDOR NAME>>',
@@ -298,84 +316,57 @@ vendors = [Vendor('vendor1',
                   upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
                      all_nontrunks,
-                     ['ip dst 10.%d.254.11' % d for d in range(240,250)]),
+                     ['ip dst 10.3.4.141'] + ['ip dst 10.%d.254.11' % d for d in range(240,251)]),
                   downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe1],
-                      ['trunk-2-%d' % d for d in range(1,5)])),
-            Vendor('vendor2',
-                upstream = TriggerGroup.combinatorial(
-                     all_nsi_byteblowers,
-                     all_nontrunks,
-                     ['ip dst 10.%d.254.12' % d for d in range(240,250)]),
-                  downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe1],
-                      ['trunk-2-%d' % d for d in range(5,9)])),
+                      [bb_cpe2],
+                      ['trunk-1-%d' % d for d in range(1,57)])),
+            # Vendor('vendor2',
+            #     upstream = TriggerGroup.combinatorial(
+            #          all_nsi_byteblowers,
+            #          all_nontrunks,
+            #          ['ip dst 10.3.4.142'] + ['ip dst 10.%d.254.12' % d for d in range(240,251)]),
+            #       downstream = TriggerGroup.combinatorial( 
+            #           [bb_cpe2],
+            #           ['trunk-3-%d' % d for d in range(1,57)])),
             Vendor('vendor3',
                 upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
                      all_nontrunks,
-                     ['ip dst 10.%d.254.13' % d for d in range(240,250)]),
+                     ['ip dst 10.3.4.144'] + ['ip dst 10.%d.254.14' % d for d in range(240,251)]),
                   downstream = TriggerGroup.combinatorial( 
                       [bb_cpe2],
-                      ['trunk-3-%d' % d for d in range(1,13)])),
-            Vendor('vendor3',
-                upstream = TriggerGroup.combinatorial(
-                     all_nsi_byteblowers,
-                     all_nontrunks,
-                     ['ip dst 10.%d.254.14' % d for d in range(240,250)]),
-                  downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe2],
-                      ['trunk-1-%d' % d for d in range(1,13)])),
+                      ['trunk-2-%d' % d for d in range(1,57)])),
             Vendor('vendor4',
                 upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
                      all_nontrunks,
-                     ['ip dst 10.%d.254.15' % d for d in range(240,250)]),
+                     ['ip dst 10.3.4.146'] + ['ip dst 10.%d.254.16' % d for d in range(240,251)]),
                   downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe2],
-                      ['trunk-4-%d' % d for d in range(1,13)])),
+                      [bb_cpe1],
+                      ['trunk-1-%d' % d for d in range(1,57)])),
             Vendor('vendor5',
                 upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
                      all_nontrunks,
-                     ['ip dst 10.%d.254.16' % d for d in range(240,250)]),
+                    ['ip dst 10.3.4.143'] +  ['ip dst 10.%d.254.13' % d for d in range(240,251)]),
                   downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe2],
-                      ['trunk-2-%d' % d for d in range(1,13)])),
+                      [bb_cpe1],
+                      ['trunk-2-%d' % d for d in range(1, 57)])),
             Vendor('vendor6',
                 upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
                      all_nontrunks,
-                     ['ip dst 10.%d.254.17' % d for d in range(240,250)]),
+                     ['ip dst 10.%d.254.15' % d for d in range(240,251)]),
                   downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe1],
-                      ['trunk-1-%d' % d for d in range(1,13)])),
-            Vendor('vendor7',
-                upstream = TriggerGroup.combinatorial(
-                     all_nsi_byteblowers,
-                     all_nontrunks,
-                     ['ip dst 10.%d.254.18' % d for d in range(240,250)]),
-                  downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe1],
-                      ['trunk-3-%d' % d for d in range(1,13)])),
-            Vendor('vendor8',
-                upstream = TriggerGroup.combinatorial(
-                     all_nsi_byteblowers,
-                     all_nontrunks,
-                     ['ip dst 10.%d.254.19' % d for d in range(240,250)]),
-                  downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe1],
-                      ['trunk-4-%d' % d for d in range(1,13)])),
+                      [bb_cpe2],
+                      ['trunk-4-%d' % d for d in range(1,57)])),
             Vendor('all-triggers', debug = True,
                 upstream = TriggerGroup.combinatorial(
                      all_nsi_byteblowers,
                      all_nontrunks),
-                  downstream = TriggerGroup.combinatorial( 
-                      [bb_cpe1, bb_cpe2],
-                      list(itertools.chain ( *[['trunk-%d-%d' % (interface, trunk) 
-                                                    for trunk in range(1,48)] 
-                                                    for interface in [1,2,3,4]])))
+                  downstream = all_trunks_interface
                   )
+                
             ]
 
 

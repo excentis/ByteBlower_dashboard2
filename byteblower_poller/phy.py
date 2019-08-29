@@ -6,10 +6,19 @@ import time
 
 # CHANGE WEBSERVER IP
 
-WEBSERVER = 'http://127.0.0.1:8080/rp/'
+WEBSERVER = 'http://10.1.1.17:8080/rp/'
 headers = {
     'content-type': "application/json"
     }
+
+DOMAIN_MAP ={
+                '10.240': 'Commscope',
+                '10.176': 'Casa',
+                '10.242': 'Cisco',
+                '10.243': 'Huawei',
+                '10.244': 'Systemtechnik',
+                '10.245': 'Nokia',
+            }
 class RemotePhy(object):
     """
         This class represents a remote phy and consists of it's name and ip address
@@ -29,54 +38,55 @@ class RemotePhy(object):
         """
         if platform.system() == "Windows":
             
-            response = os.system("ping " + self.ip + ' -n 1')
+            response = os.system("ping " + self.ip)
         else:
             response = os.system("ping -c 1 " + self.ip)
         # #and then check the response...
-        payload = dict(pingResponse=response, ip=self.ip) 
+        domain = 'Unknoz'
+        for key, value in DOMAIN_MAP.items():
+            ip_split = self.ip.split('.')[0:2]
+            key_split = key.split('.')[0:2]
+            if ip_split == key_split:
+                domain = value
+        payload = dict(pingResponse=response, ip=domain) 
         r = requests.post(url=WEBSERVER + self.name, json=payload, headers=headers)
-    
+        print(r.status_code)
 """
 TODO: Change IP addresses to correct ones
 """
-rdp_vendors = ['BKtel', 'Casa', 'Cisco', 'Commscope', 'Delta', 'Dev Systemtechnik', 'Huawei', 'Nokia', 'teleste', 'vecima', 'vector']
+rdp_vendors = ['BKtel', 'Casa', 'Cisco', 'Commscope', 'Delta', 'Dev Systemtechnik', 'Huawei', 'Nokia', 'teleste', 'vecima', 'vector', 'harmonic']
 INI_PATH = 'C:\\Users\\tijs.f\\Documents\\dashboard\\ByteBlower_dashboard2\\byteblower_poller\\phy.ini'
 
 import configparser
 config = configparser.ConfigParser()
 
 def update(ini_path):
+    """
+    Reads the current .ini file so the configparser is updated to the current configuration
+    """
     rpds = []
-    config.read(ini_path)
-    for vendor in rdp_vendors:
-        phyname = config[vendor]['phyname'].lower()
-        ip = config[vendor]['ip']
+    try:
+        config.read(ini_path)
+    # Store configuration file values
+        for i, vendor in enumerate(rdp_vendors):
+            phyname = config[vendor]['phyname'].lower()
+            ip = config[vendor]['ip']
 
-        rpds.append(RemotePhy(vendor, phyname, ip))
+            rpds.append(RemotePhy(vendor, phyname, ip))
+    except FileNotFoundError:
+    # Keep preset values
+        for vendor in rdp_vendors:
+            rpds.append(RemotePhy(vendor, f'phy{i+1}', '127.0.0.1'))
     return rpds
 
 def check_vendor(vendor):
+    """
+        check if the vendor details has been updated
+    """
     name = config[vendor]['phyname'].lower()
     ip = config[vendor]['ip']
     return name, ip
-    
-# phy1 = RemotePhy('phy1', '10.3.3.243') # BKtel
-# phy2 = RemotePhy('phy2', '10.3.3.243') # Casa
-# phy3 = RemotePhy('phy3', '10.3.3.243') # Cisco
-# phy4 = RemotePhy('phy4', '10.3.3.243') # Commscope
-# phy5 = RemotePhy('phy5', '10.3.3.243') # Delta
-# phy6 = RemotePhy('phy6', '10.3.3.243') # Dev Systemtechnik
-# phy7 = RemotePhy('phy7', '10.3.3.243') # Huawei
-# phy8 = RemotePhy('phy8', '10.3.3.243') # Nokia
-# phy9 = RemotePhy('phy9', '10.3.3.243') # teleste
-# phy10 = RemotePhy('phy', '10.3.3.243') # vecima
-# phy11 = RemotePhy('phy', '10.3.3.243') # vector
 
-# phys = [phy1, phy2, phy3, phy4, phy5, phy6, phy7, phy8, phy9, phy10, phy11]
-# while True:
-#     for phy in phys:
-#         phy.poll()
-#         time.sleep(1)
 
 while True:
     rpds = update(INI_PATH)
@@ -84,5 +94,6 @@ while True:
         name, ip = check_vendor(rpd.vendor_name)
         rpd.name = name
         rpd.ip = ip
+        print(rpd.name, rpd.ip)
         rpd.poll()
         time.sleep(1)
